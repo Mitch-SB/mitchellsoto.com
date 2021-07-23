@@ -1,0 +1,88 @@
+h2
+{
+    color: DarkCyan;
+    text-shadow: 0 2px 2px rgba(150,162,169,.6);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+ul{
+    list-style-type: none;
+    float: left;
+}
+
+::selection
+{
+    background: pink;
+}
+
+hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+}
+
+.navbar-brand{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.centered {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: teal;
+    font-size: xxx-large;
+    font-weight: 100;
+  }
+
+.buttons{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.project{
+    text-align: -webkit-center;
+    padding-bottom: 1em;
+}
+
+.profile{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+}
+
+.profile-image
+{
+    border-radius: 5px;
+    float: left;
+    width: 15rem;
+    align-self: center;
+}
+
+.profile-icons{
+    text-align: center;
+    font-size: x-large;
+}
+
+.profile-icons a{
+    color: black;
+}
+
+.profile-skills
+{
+    height: 150px;
+}
+
+.profile-skills ul li
+{
+    vertical-align: middle;
+    color: rgb(150,150,150);
+}
