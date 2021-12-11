@@ -58,7 +58,9 @@ function displayForm($sender, $email, $subject, $message) {
 		<div class="form-group">
 			<label for="message">Message</label>
 			<textarea class="form-control" rows="5" placeholder="Message" name="message"><?php echo $message; ?></textarea>
-		</div>             
+		</div>
+		<div class="g-recaptcha" data-sitekey="Site Key"></div>
+		<br/>             
 
 		<input class="btn btn-secondary" type="reset" value="Clear" />
 		<input class="btn btn-primary" type="submit" name="Submit" value="Send" />            
@@ -71,18 +73,22 @@ function displayForm($sender, $email, $subject, $message) {
 $showForm = true;
 $errorCount = 0;
 $sender = "";
-$emailTo = "(your email)";
+$emailTo = "email@domain.com";
 $email = "";
 $subject = "";
 $message = "";
 
-if (isset($_POST['Submit'])) {
+if (isset($_POST['Submit']) && $_POST['g-recaptcha-response'] != "") {
 	$sender = validateInput($_POST['sender'],"Your Name");
-$email = validateEmail($_POST['email'],"Your E-mail");
-$subject = validateInput($_POST['subject'],"subject");
-$message = validateInput($_POST['message'],"message");
+	$email = validateEmail($_POST['email'],"Your E-mail");
+	$subject = validateInput($_POST['subject'],"subject");
+	$message = validateInput($_POST['message'],"message");
+
+	$secret = 'Secret key';
+    $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+    $responseData = json_decode($verifyResponse);
 	
-	if ($errorCount==0)
+	if ($errorCount==0 && $responseData->success)
 		$showForm = false;
 	else
 		$showForm = true;
